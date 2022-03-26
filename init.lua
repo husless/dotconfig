@@ -5,4 +5,6 @@ require('user.telescope')
 require('user.treesitter')
 require('user.cmp')
 require('user.keymaps')
+require('user.lsp')
 --require('user.null-ls')
+
