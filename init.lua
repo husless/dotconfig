@@ -1,0 +1,8 @@
+require('options')
+require('plugins')
+require('user.impatient')
+require('user.telescope')
+require('user.treesitter')
+require('user.cmp')
+require('user.keymaps')
+--require('user.null-ls')
