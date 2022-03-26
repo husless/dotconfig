@@ -22,7 +22,6 @@ local options = {
     foldenable = true,
     foldmethod = 'indent',
     shiftwidth = indent,
-    smartindent = true,
     tabstop = indent,
     termguicolors = true,
     hidden = true,
@@ -31,13 +30,13 @@ local options = {
     number = true,                              -- show line number
     pumheight = 10,                             -- pop up menu height
     scrolloff = 4,
-    showmode = false,
+    showmode = true,
     smartcase = true,
     smartindent = true,                         -- make indenting smarter again
     splitbelow = true,                          -- force all horizontal splits to go below current window
     splitright = true,                          -- force all vertical splits to go to the right of current window
     wildmode = 'list:longest',
-    wrap = false,                   
+    wrap = false,
 }
 
 vim.opt.shortmess:append 'c'

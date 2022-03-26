@@ -1,5 +1,3 @@
-local fn = vim.fn
-
 -- Automaticalli install packer
 vim.cmd [[packadd packer.nvim]]
 vim.cmd([[
@@ -38,6 +36,7 @@ return packer.startup(function(use)
     use 'lewis6991/impatient.nvim' -- fast startup
     use 'EdenEast/nightfox.nvim'   -- a color scheme
     use 'folke/tokyonight.nvim'    -- another color scheme
+    use 'windwp/nvim-autopairs'
 
     -- Lazy loading:
     -- Load on specific commands
@@ -54,7 +53,7 @@ return packer.startup(function(use)
     --     cmd = 'ALEEnable',
     --     config = 'vim.cmd[[ALEEnable]]'
     -- }
-    
+
     -- snippets
     use 'L3MON4D3/LuaSnip'             -- snippet engine
     use 'rafamadriz/friendly-snippets' -- a bunch of snippets to use
