@@ -12,7 +12,7 @@ lsp_installer.on_server_ready(function(server)
     }
 
     if server.name == 'sumneko_lua' then
-        sumneko_opts = {
+        local sumneko_opts = {
             settings = {
                 Lua = {
                     diagnostics = {

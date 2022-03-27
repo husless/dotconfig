@@ -8,5 +8,6 @@ require('user.keymaps')
 require('user.lsp')
 require('user.autopairs')
 require('user.nvim-tree')
+require('user.lualine')
 --require('user.null-ls')
 

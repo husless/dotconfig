@@ -1,10 +1,10 @@
 -- Automaticalli install packer
 vim.cmd [[packadd packer.nvim]]
 vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
+    augroup packer_user_config
+        autocmd!
+        autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    augroup end
 ]]) -- Auto compile when there are changes in plugins.lua
 
 
@@ -80,13 +80,19 @@ return packer.startup(function(use)
 
     use {
         'kyazdani42/nvim-tree.lua',
-        --requires={'kyazdani42/nvim-web-devicons'},
+        requires={'kyazdani42/nvim-web-devicons', opt=true},
         config=function() require'nvim-tree'.setup {} end
     }
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
     -- Telescope
     use 'nvim-telescope/telescope.nvim'
+
+    -- Status line
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
     -- Python
     use { 'Vimjas/vim-python-pep8-indent', ft = 'python' }
