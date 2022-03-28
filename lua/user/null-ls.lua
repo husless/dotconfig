@@ -23,9 +23,19 @@ null_ls.setup({
         formatting.cmake_format,
         null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.diagnostics.mypy,
-        null_ls.builtins.diagnostics.shellcheck,
         null_ls.builtins.diagnostics.chktex,
         null_ls.builtins.diagnostics.cppcheck,
         null_ls.builtins.completion.spell,
+        null_ls.builtins.completion.luasnip,
     },
+    on_attach = function(client)
+        if client.resolved_capabilities.document_formattting then
+            vim.cmd([[
+            augroup LspFormatting
+                autocmd! *<buffer>
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+            augroup END
+            ]])
+        end
+    end,
 })

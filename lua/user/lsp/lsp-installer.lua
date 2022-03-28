@@ -34,6 +34,9 @@ lsp_installer.on_server_ready(function(server)
         }
         opts = vim.tbl_deep_extend('force', sumneko_opts, opts)
     end
+    if server.name == 'clangd' then
+        opts.capabilities.offsetEncoding = { 'utf-16' }
+    end
 
     -- this setup() function is exactly the same as lspconfig's.
     server:setup(opts)
