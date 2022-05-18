@@ -24,7 +24,7 @@ null_ls.setup({
         null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.diagnostics.mypy,
         null_ls.builtins.diagnostics.chktex,
-        null_ls.builtins.diagnostics.cppcheck,
+        null_ls.builtins.diagnostics.cppcheck.with({extra_args={'--std', 'c++20'}}),
         null_ls.builtins.completion.spell,
         null_ls.builtins.completion.luasnip,
     },
