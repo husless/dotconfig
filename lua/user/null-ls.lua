@@ -26,7 +26,7 @@ null_ls.setup({
         null_ls.builtins.diagnostics.chktex,
         null_ls.builtins.diagnostics.cppcheck.with({extra_args={'--std', 'c++20'}}),
         null_ls.builtins.completion.spell,
-        null_ls.builtins.completion.luasnip,
+        null_ls.builtins.completion.luasnip.with({filetypes={}}),
     },
     on_attach = function(client)
         if client.resolved_capabilities.document_formattting then
