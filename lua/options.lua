@@ -16,6 +16,7 @@ vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 local options = {
     autoindent = true,
     clipboard = 'unnamed,unnamedplus',
+    completeopt='menu,menuone,noselect',
     cursorline = true,
     cmdheight = 2,                              -- more space for nvim command line to display messages.
     expandtab = true,
