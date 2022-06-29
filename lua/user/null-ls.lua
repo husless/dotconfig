@@ -7,20 +7,10 @@ local formatting = null_ls.builtins.formatting
 
 null_ls.setup({
     sources = {
-        formatting.prettier.with({
-            extra_args = function(params)
-                return params.options
-                and params.options.tabSize
-                and {
-                    "--tab-width",
-                    params.options.tabSize,
-                }
-            end,
-        }),
         formatting.black.with({ extra_args = { '--fast' } }),
-        formatting.stylua,
+        -- formatting.stylua,
         formatting.clang_format,
-        formatting.cmake_format,
+        -- formatting.cmake_format,
         null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.diagnostics.mypy,
         null_ls.builtins.diagnostics.chktex,
