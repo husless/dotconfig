@@ -80,21 +80,25 @@ return {
 
         clangd = {
           mason = false,
-          cmd = { "clangd" },
           root_dir = function(fname)
             local root_files = {
+              ".clangd",
+              ".clang-tidy",
+              ".clang-format",
               "compile_commands.json",
+              "compile_flags.txt",
+              "configure.ac",
               ".git",
             }
             return require("lspconfig").util.root_pattern(unpack(root_files))(fname)
           end,
-          single_file_support = false,
+          capabilities = {
+            offsetEncoding = { "utf-16" },
+          },
         },
         rust_analyzer = {
           mason = false,
           cmd = { "rustup", "run", "stable", "rust-analyzer" },
-          filetypes = { "rust" },
-          root_dir = require("lspconfig").util.root_pattern("Cargo.toml"),
         },
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
@@ -109,11 +113,6 @@ return {
             },
           },
         },
-      },
-      setup = {
-        clangd = function(_, opts)
-          opts.capabilities.offsetEncoding = { "utf-16" }
-        end,
       },
     },
   },
