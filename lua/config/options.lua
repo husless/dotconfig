@@ -17,7 +17,7 @@ local options = {
     vertright = "┣",
     verthoriz = "╋",
   },
-  foldenable = true,
+  foldenable = false,
   foldmethod = "indent",
   tabstop = indent,
   termguicolors = true,
