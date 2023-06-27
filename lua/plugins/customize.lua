@@ -17,11 +17,19 @@ return {
           nls.builtins.formatting.stylua,
           nls.builtins.formatting.clang_format,
           nls.builtins.formatting.rustfmt,
-          nls.builtins.formatting.autopep8,
-          nls.builtins.formatting.black,
+          nls.builtins.formatting.black.with({ extra_args = { "--fast", "--line-length", "120" } }),
           nls.builtins.diagnostics.mypy,
           nls.builtins.diagnostics.chktex,
-          nls.builtins.diagnostics.ruff,
+          nls.builtins.diagnostics.ruff.with({
+            extra_args = {
+              "--select",
+              "ALL",
+              "--ignore",
+              "D,EXE,I,PGH,PTH,PLR,T20",
+              "--line-length",
+              "120",
+            },
+          }),
         },
         on_attach = function(client, bufnr)
           local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -98,7 +106,6 @@ return {
       ---@type lspconfig.options
       servers = {
         jsonls = { mason = false },
-
         clangd = {
           mason = false,
           root_dir = function(fname)
@@ -134,6 +141,7 @@ return {
             },
           },
         },
+        jedi_language_server = {},
       },
     },
   },
@@ -200,6 +208,9 @@ return {
     opts = {
       ensure_installed = {
         "stylua",
+        "ruff",
+        "black",
+        "mypy",
       },
     },
   },
