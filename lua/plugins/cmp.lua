@@ -25,6 +25,7 @@ return {
       local luasnip = require("luasnip")
       local cmp = require("cmp")
 
+      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
