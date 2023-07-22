@@ -59,6 +59,7 @@ return {
 
   -- disable trouble
   { "folke/trouble.nvim", enabled = false },
+  { "rcarriga/nvim-notify", enabled = false },
 
   -- change some telescope options and a keymap to browse plugin files
   {
@@ -108,18 +109,6 @@ return {
         jsonls = { mason = false },
         clangd = {
           mason = false,
-          root_dir = function(fname)
-            local root_files = {
-              ".clangd",
-              ".clang-tidy",
-              ".clang-format",
-              "compile_commands.json",
-              "compile_flags.txt",
-              "configure.ac",
-              ".git",
-            }
-            return require("lspconfig").util.root_pattern(unpack(root_files))(fname)
-          end,
           capabilities = {
             offsetEncoding = { "utf-16" },
           },
