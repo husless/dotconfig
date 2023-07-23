@@ -25,7 +25,7 @@ return {
               "--select",
               "ALL",
               "--ignore",
-              "ANN101,D1,EXE,I,PTH,T20",
+              "ANN101,D1,D211,D213,EXE,I,PTH,T20",
               "--line-length",
               "120",
             },
@@ -42,7 +42,10 @@ return {
               group = augroup,
               buffer = bufnr,
               callback = function()
-                vim.lsp.buf.format({ bufnr = bufnr })
+                vim.lsp.buf.format({
+                  async = false,
+                  bufnr = bufnr,
+                })
               end,
             })
           end
@@ -76,13 +79,21 @@ return {
     -- change some options
     opts = {
       defaults = {
-        prompt_prefix = " ",
+        prompt_prefix = "   ",
         selection_caret = " ",
         path_display = { "smart" },
         layout_strategy = "horizontal",
         layout_config = { prompt_position = "bottom" },
         sorting_strategy = "ascending",
         winblend = 0,
+        color_devicons = true,
+        file_sorter = require("telescope.sorters").get_fuzzy_file,
+        set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+        file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+        grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+        qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+        -- Developer configurations: Not meant for general override
+        buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
       },
     },
   },
@@ -115,6 +126,34 @@ return {
         },
         rust_analyzer = {
           mason = false,
+          keys = {
+            { "K", "<cmd>RustHoverActions<cr>", desc = "Hover Actions (Rust)" },
+            { "<leader>cR", "<cmd>RustCodeAction<cr>", desc = "Code Action (Rust)" },
+            { "<leader>dr", "<cmd>RustDebuggables<cr>", desc = "Run Debuggables (Rust)" },
+          },
+          settings = {
+            ["rust-analyzer"] = {
+              cargo = {
+                allFeatures = true,
+                loadOutDirsFromCheck = true,
+                runBuildScripts = true,
+              },
+              -- Add clippy lints for Rust.
+              checkOnSave = {
+                allFeatures = true,
+                command = "clippy",
+                extraArgs = { "--no-deps" },
+              },
+              procMacro = {
+                enable = true,
+                ignored = {
+                  ["async-trait"] = { "async_trait" },
+                  ["napi-derive"] = { "napi" },
+                  ["async-recursion"] = { "async_recursion" },
+                },
+              },
+            },
+          },
           cmd = { "rustup", "run", "stable", "rust-analyzer" },
         },
         lua_ls = {
@@ -157,6 +196,10 @@ return {
       },
       indent = {
         enable = true,
+      },
+      context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
       },
     },
   },
