@@ -61,7 +61,7 @@ return {
   },
 
   -- disable trouble
-  { "folke/trouble.nvim", enabled = false },
+  --{ "folke/trouble.nvim", enabled = false },
   { "rcarriga/nvim-notify", enabled = false },
 
   -- change some telescope options and a keymap to browse plugin files
@@ -193,6 +193,9 @@ return {
         "regex",
         "vim",
         "yaml",
+      },
+      ignore_install = {
+        "javascript", "html", "typescript", "tsx",
       },
       indent = {
         enable = true,
