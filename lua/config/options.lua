@@ -42,7 +42,6 @@ local options = {
   softtabstop = indent,
   splitbelow = true, -- force all horizontal splits to go below current window
   splitright = true, -- force all vertical splits to go to the right of current window
-  wildmode = { "full", "longest", "lastused" },
   wildignore = { "*.o", "*~", "*.pyc", "*pycache*" },
   wrap = false,
 }
