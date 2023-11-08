@@ -5,8 +5,9 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
+  { "mfussenegger/nvim-lint", enabled = false },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "mason.nvim" },
     opts = function()
@@ -17,19 +18,8 @@ return {
           nls.builtins.formatting.stylua,
           nls.builtins.formatting.clang_format,
           nls.builtins.formatting.rustfmt,
-          nls.builtins.formatting.black.with({ extra_args = { "--fast", "--line-length", "120" } }),
           nls.builtins.diagnostics.mypy,
           nls.builtins.diagnostics.chktex,
-          nls.builtins.diagnostics.ruff.with({
-            extra_args = {
-              "--select",
-              "ALL",
-              "--ignore",
-              "ANN101,D1,D211,D213,EXE,I,PTH,T20",
-              "--line-length",
-              "120",
-            },
-          }),
         },
         on_attach = function(client, bufnr)
           local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -62,7 +52,6 @@ return {
 
   -- disable trouble
   --{ "folke/trouble.nvim", enabled = false },
-  { "rcarriga/nvim-notify", enabled = false },
 
   -- change some telescope options and a keymap to browse plugin files
   {
@@ -79,7 +68,7 @@ return {
     -- change some options
     opts = {
       defaults = {
-        prompt_prefix = "   ",
+        prompt_prefix = "  ",
         selection_caret = " ",
         path_display = { "smart" },
         layout_strategy = "horizontal",
@@ -115,7 +104,7 @@ return {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = {
-      ---@type lspconfig.options
+      -- @type lspconfig.options
       servers = {
         jsonls = { mason = false },
         clangd = {
@@ -124,6 +113,7 @@ return {
             offsetEncoding = { "utf-16" },
           },
         },
+        fortls = {},
         rust_analyzer = {
           mason = false,
           keys = {
@@ -133,18 +123,14 @@ return {
           },
           settings = {
             ["rust-analyzer"] = {
-              cargo = {
+              Cargo = {
                 allFeatures = true,
                 loadOutDirsFromCheck = true,
                 runBuildScripts = true,
               },
               -- Add clippy lints for Rust.
-              checkOnSave = {
-                allFeatures = true,
-                command = "clippy",
-                extraArgs = { "--no-deps" },
-              },
-              procMacro = {
+              checkOnSave = true,
+              ProcMacro = {
                 enable = true,
                 ignored = {
                   ["async-trait"] = { "async_trait" },
@@ -170,6 +156,18 @@ return {
           },
         },
         jedi_language_server = {},
+        ruff_lsp = {
+          init_options = {
+            settings = {
+              -- Any extra CLI arguments for `ruff` go here.
+              args = {
+                "--select=ALL",
+                "--ignore=ANN101,D1,D211,D213,EXE,I,PTH,Q000,T20",
+                "--line-length=120",
+              },
+            },
+          },
+        },
       },
     },
   },
@@ -195,7 +193,10 @@ return {
         "yaml",
       },
       ignore_install = {
-        "javascript", "html", "typescript", "tsx",
+        "javascript",
+        "html",
+        "typescript",
+        "tsx",
       },
       indent = {
         enable = true,
@@ -241,9 +242,17 @@ return {
   {
     "williamboman/mason.nvim",
     opts = {
+      ui = {
+        icons = {
+          package_installed = "✓",
+          package_pending = "➜",
+          package_uninstalled = "✗",
+        },
+      },
       ensure_installed = {
         "stylua",
         "ruff",
+        "ruff-lsp",
         "black",
         "mypy",
       },
