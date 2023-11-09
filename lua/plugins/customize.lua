@@ -15,7 +15,6 @@ return {
       return {
         root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
         sources = {
-          nls.builtins.formatting.stylua,
           nls.builtins.formatting.clang_format,
           nls.builtins.formatting.rustfmt,
           nls.builtins.diagnostics.mypy,
@@ -105,6 +104,18 @@ return {
     ---@class PluginLspOpts
     opts = {
       -- @type lspconfig.options
+      -- options for vim.diagnostic.config()
+      diagnostics = {
+        virtual_text = {
+          prefix = "⊛",
+        },
+      },
+      -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
+      -- Be aware that you also will need to properly configure your LSP server to
+      -- provide the inlay hints.
+      inlay_hints = {
+        enabled = false,
+      },
       servers = {
         jsonls = { mason = false },
         clangd = {
@@ -116,11 +127,6 @@ return {
         fortls = {},
         rust_analyzer = {
           mason = false,
-          keys = {
-            { "K", "<cmd>RustHoverActions<cr>", desc = "Hover Actions (Rust)" },
-            { "<leader>cR", "<cmd>RustCodeAction<cr>", desc = "Code Action (Rust)" },
-            { "<leader>dr", "<cmd>RustDebuggables<cr>", desc = "Run Debuggables (Rust)" },
-          },
           settings = {
             ["rust-analyzer"] = {
               Cargo = {
