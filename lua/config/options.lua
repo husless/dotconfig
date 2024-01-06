@@ -31,7 +31,7 @@ local options = {
     precedes = "↩",
   },
   mouse = "",
-  number = true, -- show line number
+  relativenumber = true,
   pumheight = 10, -- pop up menu height
   scrolloff = 4,
   shiftwidth = indent,

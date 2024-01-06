@@ -10,6 +10,7 @@ return {
         sources = {
           nls.builtins.formatting.clang_format,
           nls.builtins.formatting.rustfmt,
+          nls.builtins.formatting.zigfmt,
           nls.builtins.diagnostics.mypy,
           nls.builtins.diagnostics.chktex,
         },
@@ -41,11 +42,6 @@ return {
     opts = {
       -- @type lspconfig.options
       -- options for vim.diagnostic.config()
-      diagnostics = {
-        virtual_text = {
-          prefix = "⊛",
-        },
-      },
       -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
       -- Be aware that you also will need to properly configure your LSP server to
       -- provide the inlay hints.
@@ -72,7 +68,7 @@ return {
             offsetEncoding = { "utf-16" },
           },
         },
-        fortls = {},
+        cmake = {},
         rust_analyzer = {
           mason = false,
           settings = {
@@ -122,6 +118,7 @@ return {
             },
           },
         },
+        zls = {},
       },
     },
   },
@@ -141,6 +138,8 @@ return {
         "ruff-lsp",
         "black",
         "mypy",
+        "zls",
+        "cmake-language-server",
       },
     },
   },

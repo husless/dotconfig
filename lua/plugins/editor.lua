@@ -21,6 +21,11 @@ return {
       timeout = 5000,
     },
   },
+  {
+    "laytan/cloak.nvim",
+    lazy = false,
+    config = true,
+  },
   -- change some telescope options and a keymap to browse plugin files
   {
     "nvim-telescope/telescope.nvim",
