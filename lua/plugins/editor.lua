@@ -24,7 +24,7 @@ return {
   {
     "laytan/cloak.nvim",
     lazy = false,
-    config = true,
+    opts = {},
   },
   -- change some telescope options and a keymap to browse plugin files
   {
