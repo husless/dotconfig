@@ -12,7 +12,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "hrsh7th/cmp-emoji",
+      "hrsh7th/cmp-cmdline",
     },
     opts = function()
       local has_words_before = function()
@@ -23,6 +23,28 @@ return {
 
       local luasnip = require("luasnip")
       local cmp = require("cmp")
+      -- `/` cmdline setup.
+      cmp.setup.cmdline("/", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = "buffer" },
+        },
+      })
+
+      -- `:` cmdline setup.
+      cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = "path" },
+        }, {
+          {
+            name = "cmdline",
+            option = {
+              ignore_cmds = { "Man", "!" },
+            },
+          },
+        }),
+      })
 
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
       return {
@@ -82,7 +104,6 @@ return {
           -- {name = "copilot"}, -- INFO: uncomment this for AI completion
           { name = "spell" },
           { name = "calc" },
-          { name = "emoji" },
         }),
         formatting = {
           format = function(_, item)
