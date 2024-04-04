@@ -1,17 +1,29 @@
 return {
   {
     "folke/noice.nvim",
-    opts = function(_, opts)
-      table.insert(opts.routes, {
-        filter = {
-          event = "notify",
-          find = "No information available",
-        },
-        opts = { skip = true },
-      })
-      opts.presets.lsp_doc_border = true
-    end,
+    enabled = false,
   },
+  {
+    "rcarriga/nvim-notify",
+    enabled = false,
+  },
+  {
+    "folke/flash.nvim",
+    enabled = false,
+  },
+  -- {
+  --   "folke/noice.nvim",
+  --   opts = function(_, opts)
+  --     table.insert(opts.routes, {
+  --       filter = {
+  --         event = "notify",
+  --         find = "No information available",
+  --       },
+  --       opts = { skip = true },
+  --     })
+  --     opts.presets.lsp_doc_border = true
+  --   end,
+  -- },
   {
     "akinsho/bufferline.nvim",
     opts = {
@@ -43,7 +55,18 @@ return {
       }
     end,
   },
-
+  {
+    "echasnovski/mini.ai",
+    enabled = false,
+  },
+  {
+    "echasnovski/mini.comment",
+    enabled = false,
+  },
+  {
+    "echasnovski/mini.pairs",
+    enabled = false,
+  },
   {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
