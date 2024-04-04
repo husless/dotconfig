@@ -10,7 +10,6 @@ return {
         "rust",
         "python",
         "dockerfile",
-        "latex",
         "json",
         "lua",
         "markdown",

@@ -1,9 +1,5 @@
 return {
   {
-    "folke/noice.nvim",
-    enabled = false,
-  },
-  {
     "rcarriga/nvim-notify",
     enabled = false,
   },
@@ -11,19 +7,27 @@ return {
     "folke/flash.nvim",
     enabled = false,
   },
-  -- {
-  --   "folke/noice.nvim",
-  --   opts = function(_, opts)
-  --     table.insert(opts.routes, {
-  --       filter = {
-  --         event = "notify",
-  --         find = "No information available",
-  --       },
-  --       opts = { skip = true },
-  --     })
-  --     opts.presets.lsp_doc_border = true
-  --   end,
-  -- },
+  {
+    "folke/noice.nvim",
+    opts = {
+      cmdline = {
+        enabled = false,
+      },
+      messages = {
+        enabled = false,
+      },
+      popupmenu = {
+        enabled = false,
+      },
+      views = {
+        mini = {
+          position = {
+            row = -2,
+          },
+        },
+      },
+    },
+  },
   {
     "akinsho/bufferline.nvim",
     opts = {
@@ -54,18 +58,6 @@ return {
         },
       }
     end,
-  },
-  {
-    "echasnovski/mini.ai",
-    enabled = false,
-  },
-  {
-    "echasnovski/mini.comment",
-    enabled = false,
-  },
-  {
-    "echasnovski/mini.pairs",
-    enabled = false,
   },
   {
     "nvimdev/dashboard-nvim",
