@@ -5,7 +5,31 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  { "mfussenegger/nvim-lint", enabled = false },
+  {
+    "mfussenegger/nvim-lint",
+    linters = {
+      ruff = {},
+      mypy = {},
+    },
+  },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "ruff_fix", "ruff_format" },
+      },
+      formatters = {
+        ruff = {
+          prepend_args = {
+            "--select=ALL",
+            "--ignore=ANN101,D1,D211,D213,EXE,I,PTH,Q000,T20",
+            "--line-length=120",
+          },
+        },
+      },
+    },
+  },
   -- change trouble config
   {
     "folke/trouble.nvim",
