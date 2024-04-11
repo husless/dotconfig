@@ -2,6 +2,7 @@ local indent = 4
 
 local options = {
   autoindent = true,
+  cindent = true,
   clipboard = "unnamed,unnamedplus",
   completeopt = "menu,menuone,noselect,noinsert",
   cursorline = true,

@@ -23,7 +23,8 @@ return {
         ruff = {
           prepend_args = {
             "--select=ALL",
-            "--ignore=ANN101,D1,D211,D213,EXE,I,PTH,Q000,T20",
+            "--ignore=ANN101,D1,D211,D213,EXE,F401,I,PTH,Q000,T20",
+            "--unfixable=F401",
             "--line-length=120",
           },
         },
