@@ -7,9 +7,18 @@
 return {
   {
     "mfussenegger/nvim-lint",
-    linters = {
-      ruff = {},
-      mypy = {},
+    opts = {
+      linters_by_ft = {
+        python = { "mypy", "ruff" },
+      },
+      linters = {
+        ruff = {},
+        mypy = {
+          args = {
+            "--no-warn-incomplete-stub",
+          },
+        },
+      },
     },
   },
   {
@@ -79,15 +88,6 @@ return {
   -- change some telescope options and a keymap to browse plugin files
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = {
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        config = function()
-          require("telescope").load_extension("fzf")
-        end,
-      },
-    },
     keys = {
       -- add a keymap to browse plugin files
       {
