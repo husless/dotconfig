@@ -69,19 +69,6 @@ return {
           },
         },
         jedi_language_server = {},
-        ruff_lsp = {
-          init_options = {
-            settings = {
-              -- Any extra CLI arguments for `ruff` go here.
-              args = {
-                "--select=ALL",
-                "--ignore=ANN101,D1,D211,D213,EXE,I,PTH,Q000,T20",
-                "--unfixable=F401",
-                "--line-length=120",
-              },
-            },
-          },
-        },
         zls = {},
       },
     },
@@ -99,7 +86,6 @@ return {
       ensure_installed = {
         "stylua",
         "ruff",
-        "ruff-lsp",
         "black",
         "mypy",
         "zls",
