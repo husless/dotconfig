@@ -9,10 +9,9 @@ return {
     "mfussenegger/nvim-lint",
     opts = {
       linters_by_ft = {
-        python = { "mypy", "ruff" },
+        python = { "mypy" },
       },
       linters = {
-        ruff = {},
         mypy = {
           args = {
             "--no-warn-incomplete-stub",
