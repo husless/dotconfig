@@ -48,6 +48,7 @@ return {
 
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
       return {
+        auto_brackets = {}, -- configure any filetype to auto add brackets
         completion = {
           completeopt = "menu,menuone,noinsert,noselect",
         },
