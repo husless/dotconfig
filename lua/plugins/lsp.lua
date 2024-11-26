@@ -27,8 +27,9 @@ return {
             }
             return require("lspconfig").util.root_pattern(unpack(root_files))(fname)
           end,
-          capabilities = {
-            offsetEncoding = { "utf-16" },
+          cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
+          init_options = {
+            fallbackFlags = { "-std=c++23" },
           },
         },
         cmake = {},
