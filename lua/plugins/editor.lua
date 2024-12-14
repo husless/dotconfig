@@ -6,6 +6,10 @@
 -- * override the configuration of LazyVim plugins
 return {
   {
+    "folke/which-key.nvim",
+    opts = { preset = "modern" },
+  },
+  {
     "mfussenegger/nvim-lint",
     opts = {
       linters_by_ft = {
