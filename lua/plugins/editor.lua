@@ -71,7 +71,7 @@ return {
       })
     end,
     opts = {
-      font = "BlexMonoNerdFontMono=34;LXGWWenKai=34",
+      font = "BlexMono Nerd Font Mono=34;LXGW WenKai=34",
       theme = "Dracula",
       -- window_title = function()
       --   return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), ":t")
