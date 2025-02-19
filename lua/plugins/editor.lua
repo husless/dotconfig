@@ -112,7 +112,6 @@ return {
         sorting_strategy = "ascending",
         winblend = 0,
         color_devicons = true,
-        file_sorter = require("telescope.sorters").get_fuzzy_file,
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
