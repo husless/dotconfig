@@ -28,9 +28,6 @@ return {
             return require("lspconfig").util.root_pattern(unpack(root_files))(fname)
           end,
           cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
-          init_options = {
-            fallbackFlags = { "-std=c++23" },
-          },
         },
         cmake = {},
         rust_analyzer = {
@@ -75,7 +72,7 @@ return {
     },
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ui = {
         icons = {
@@ -87,7 +84,6 @@ return {
       ensure_installed = {
         "stylua",
         "ruff",
-        "black",
         "mypy",
         "zls",
         "cmake-language-server",
