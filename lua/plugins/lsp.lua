@@ -12,21 +12,8 @@ return {
         enabled = false,
       },
       servers = {
-        jsonls = { mason = false },
         clangd = {
           mason = false,
-          root_dir = function(fname)
-            local root_files = {
-              ".clangd",
-              ".clang-tidy",
-              ".clang-format",
-              "compile_commands.json",
-              "compile_flags.txt",
-              "configure.ac",
-              ".git",
-            }
-            return require("lspconfig").util.root_pattern(unpack(root_files))(fname)
-          end,
           cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
         },
         cmake = {},

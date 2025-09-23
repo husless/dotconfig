@@ -6,6 +6,8 @@ return {
       ensure_installed = {
         "c",
         "cpp",
+        "cuda",
+        "cmake",
         "go",
         "rust",
         "python",
