@@ -16,7 +16,7 @@ return {
           mason = false,
           cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
         },
-        cmake = {},
+        neocmake = {},
         rust_analyzer = {
           mason = false,
           settings = {
@@ -73,7 +73,7 @@ return {
         "ruff",
         "mypy",
         "zls",
-        "cmake-language-server",
+        "neocmakelsp",
       },
     },
   },
