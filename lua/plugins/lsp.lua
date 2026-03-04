@@ -53,8 +53,15 @@ return {
             },
           },
         },
-        jedi_language_server = {},
-        zls = {},
+        basepyright = {
+          settings = {
+            basepyright = {
+              analysis = {
+                ignore = { "*" },
+              },
+            },
+          },
+        },
       },
     },
   },
@@ -72,7 +79,6 @@ return {
         "stylua",
         "ruff",
         "mypy",
-        "zls",
         "neocmakelsp",
       },
     },
