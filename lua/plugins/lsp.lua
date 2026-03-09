@@ -53,15 +53,7 @@ return {
             },
           },
         },
-        basepyright = {
-          settings = {
-            basepyright = {
-              analysis = {
-                ignore = { "*" },
-              },
-            },
-          },
-        },
+        ty = {},
       },
     },
   },
@@ -78,7 +70,7 @@ return {
       ensure_installed = {
         "stylua",
         "ruff",
-        "mypy",
+        "ty",
         "neocmakelsp",
       },
     },

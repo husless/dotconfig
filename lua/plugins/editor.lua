@@ -10,21 +10,6 @@ return {
     opts = { preset = "modern" },
   },
   {
-    "mfussenegger/nvim-lint",
-    opts = {
-      linters_by_ft = {
-        python = { "mypy" },
-      },
-      linters = {
-        mypy = {
-          args = {
-            "--no-warn-incomplete-stub",
-          },
-        },
-      },
-    },
-  },
-  {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
