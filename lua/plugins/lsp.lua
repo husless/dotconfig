@@ -53,7 +53,9 @@ return {
             },
           },
         },
-        ty = {},
+        ty = {
+          diagnosticMode = "workspace",
+        },
       },
     },
   },
